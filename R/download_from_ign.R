@@ -135,7 +135,7 @@ download_7z <- function(url, src_folder, db_ign){
    archive_extract(destfile, src_folder)
 
    message("Data are downloaded at :\n",
-           src_folder, "\n")
+           path.expand(src_folder), "\n")
 }
 
 
