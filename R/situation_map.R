@@ -24,8 +24,8 @@ situation_map <- function(shape, project_name, wd, scan = "scan25"){
       download_vector_data(shape, project_name, wd)
    }
 
-   communes <- read_sf(list.files(communes_filepath, pattern = "shp", full.names = TRUE))
-   lines <- st_cast(communes, "MULTILINESTRING")
+   communes <- read_sf(list.files(communes_filepath, pattern = "shp", full.names = TRUE)[1])
+   lines <- st_cast(communes, "MULTILINESTRING", group_or_split = FALSE)
 
    if(length(list.files(scan_filepath)) == 0){
       download_scan(shape, project_name, wd)

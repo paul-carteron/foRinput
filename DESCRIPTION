@@ -4,26 +4,29 @@ Title: Download free data for forest management
 Version: 0.0.1
 Authors@R: 
     person("Paul", "Carteron", , "carteronpaul@gmail.com", role = c("aut", "cre"),
-            comment = c(ORCID = "0000-0002-6942-6662"))
+           comment = c(ORCID = "0000-0002-6942-6662"))
 Maintainer: Paul Carteron <carteronpaul@gmail.com>
-Description: Download all french available open-source data for forest management from a location.
+Description: Download all french available open-source data for forest
+    management from a location or for a departement.
 License: GPL (>= 3)
 BugReports: https://github.com/paul-carteron/foRinput/issues
+Depends: 
+    R (>= 2.10)
+Imports:
+    archive,
+    happign,
+    magrittr,
+    sf,
+    stars,
+    tmap,
+    xml2
+Suggests: 
+    testthat (>= 3.0.0)
+Remotes: 
+    paul-carteron/happign
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
-Depends: 
-    R (>= 2.10)
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-Imports:
-    sf,
-    stars,
-    tmap,
-    magrittr,
-    happign
-Remotes: 
-    paul-carteron/happign
