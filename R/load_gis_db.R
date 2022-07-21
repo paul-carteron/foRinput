@@ -14,9 +14,19 @@ load_gis_db <- function(num_dep = "75"){
    match.arg(num_dep,
              foRinput::liste_dep)
 
-   gis_db_path <- Sys.getenv("FORINPUT_SRC_FOLDER")
+   gis_db_path <- file.path(Sys.getenv("FORINPUT_SRC_FOLDER"), "GIS_database")
+   dep_path <- file.path(gis_db_path, num_dep)
+
+   if (dir.exists(dep_path)){
+      return(message("GIS_Database for ", num_dep," is already download at : \n",
+                     dep_path))
+   }else{
+      dir.create(dep_path, showWarnings = FALSE)
+      message("GIS_Database for ", num_dep," is set at : \n",
+              dep_path)
+   }
 
    liste_bdd <- get_liste_db()[c(4, 7, 12, 26, 28)]
-   lapply(liste_bdd, load_from_ign, num_dep, gis_db_path)
+   lapply(liste_bdd, load_from_ign, num_dep, dep_path)
 }
 
