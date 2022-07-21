@@ -27,7 +27,8 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      FORINPUT_SRC_FOLDER: ${{ env.HOME }}
+      FORINPUT_SRC_FOLDER: ~/
+
     steps:
       - uses: actions/checkout@v2
 
