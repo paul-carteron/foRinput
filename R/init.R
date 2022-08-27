@@ -3,16 +3,21 @@
 #'
 .onAttach <- function(libname, pkgname) {
 
-   home_folder <- Sys.getenv("HOME")
-   gis_db_path <- suppressWarnings(normalizePath(file.path(home_folder, "GIS_database")))
+   val <- Sys.getenv("FORINPUT_SRC_FOLDER")
 
-   if (!dir.exists(gis_db_path)){
-      dir.create(gis_db_path, showWarnings = F)
+   if (identical(val, "")) {
+      val <- Sys.getenv("HOME")
    }
 
-   packageStartupMessage("GIS_Database is set at : ",  gis_db_path)
-   packageStartupMessage("To change default folder change 'HOME' environnement variable in .Renviron",
-                         "\nFor that, use usethis::edit_r_environ() and restart R session.")
+   gis_db_path <- suppressWarnings(normalizePath(file.path(val, "GIS_database")))
+   packageStartupMessage(
+         "GIS_Database is set at : ", val,
+         "\nTo change it, use usethis::edit_r_environ(), ",
+         "add line below and restart R session.\n",
+         "FORINPUT_SRC_FOLDER='C:/your/path'")
+
+   if (!dir.exists(gis_db_path)){
+         dir.create(gis_db_path, showWarnings = F)
+      }
 
 }
-

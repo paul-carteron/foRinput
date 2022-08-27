@@ -14,7 +14,13 @@ load_gis_db <- function(num_dep = "75"){
    match.arg(num_dep,
              foRinput::liste_dep)
 
-   gis_db_path <- file.path(Sys.getenv("HOME"), "GIS_database")
+   val <- Sys.getenv("FORINPUT_SRC_FOLDER")
+
+   if (identical(val, "")) {
+      val <- Sys.getenv("HOME")
+   }
+
+   gis_db_path <- file.path(val, "GIS_database")
    dep_path <- file.path(gis_db_path, num_dep)
 
    if (dir.exists(dep_path)){
@@ -27,6 +33,6 @@ load_gis_db <- function(num_dep = "75"){
    }
 
    liste_bdd <- get_liste_db()[c(4, 7, 12, 26, 28)]
-   lapply(liste_bdd, load_from_ign, num_dep, dep_path)
+   invisible(lapply(liste_bdd, load_from_ign, num_dep, dep_path))
 }
 
