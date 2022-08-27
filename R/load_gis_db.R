@@ -14,7 +14,7 @@ load_gis_db <- function(num_dep = "75"){
    match.arg(num_dep,
              foRinput::liste_dep)
 
-   gis_db_path <- file.path(Sys.getenv("FORINPUT_SRC_FOLDER"), "GIS_database")
+   gis_db_path <- file.path(Sys.getenv("HOME"), "GIS_database")
    dep_path <- file.path(gis_db_path, num_dep)
 
    if (dir.exists(dep_path)){
